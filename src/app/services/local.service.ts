@@ -68,7 +68,6 @@ export class LocalService {
   }
 
   getExpenses(key: string):Observable<ExpensesModel[]> {
-    localStorage.clear();
     return this.localDataStore$;
   }
 
