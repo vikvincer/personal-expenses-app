@@ -3,7 +3,6 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { ExpensesModel } from '../models/expenses.model';
 import { v4 as uuidv4 } from 'uuid';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DateTime } from 'luxon';
 
 
 @Injectable({
@@ -81,12 +80,9 @@ export class LocalService {
     let headers = new HttpHeaders({
       'Content-Type' : 'application/json',
     });
-
-   const localData: any = localStorage.getItem(this.activeUser);
-   const localArrayData = JSON.parse(localData);
-   return this.http.post(url, {body: localArrayData}, {headers}).subscribe(res => {
-     console.log('res', res)
-   })
+    const localData: any = localStorage.getItem(this.activeUser);
+    const localArrayData = JSON.parse(localData);
+    return this.http.post(url, {body: localArrayData}, {headers});
   }
 
 }
