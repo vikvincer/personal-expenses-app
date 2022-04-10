@@ -1,0 +1,40 @@
+.menu-side-bar {
+    padding: 15px 0;
+    background: #fff;
+    box-shadow: 1px 1px 9px -1px rgba(0,0,0,0.65);
+    -webkit-box-shadow: 1px 1px 9px -1px rgba(0,0,0,0.65);
+    -moz-box-shadow: 1px 1px 9px -1px rgba(0,0,0,0.65);
+    position: relative;
+    height: 100%;
+    ul {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        li {
+            padding: 5px 15px;
+            a {
+               display: block;
+               padding: 15px 10px;
+               transition: background ease-in-out .4s;
+               border-radius: 5px;
+            }
+            &:hover {
+                a {
+                    background: rgba(146, 144, 144, 0.2);
+                }
+              
+            }
+            &.active {
+                a {
+                    background: #f44336;
+                    color: #fff;
+                    box-shadow: 1px 1px 9px -1px rgba(0,0,0,0.49);
+                    -webkit-box-shadow: 1px 1px 9px -1px rgba(0,0,0,0.49);
+                    -moz-box-shadow: 1px 1px 9px -1px rgba(0,0,0,0.49);
+                }
+            }
+        }
+    }
+}

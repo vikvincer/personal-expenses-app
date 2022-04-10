@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'expenses-tracker';
+  constructor(private router: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+
+  }
 }

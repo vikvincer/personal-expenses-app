@@ -1,0 +1,52 @@
+<div class="expenses-container">
+    <div class="controls">
+        <!-- <div> -->
+            <button (click)="updloadData()"><mat-icon>upload</mat-icon> Upload data</button>
+            <button (click)="showForm()"><mat-icon>add</mat-icon> Add item</button>
+        <!-- </div> -->
+
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <a class="sortButton" 
+                        [ngClass]="{
+                            'up': (sortQuery.titleType === 'desc' && sortQuery.sort === 'asc'), 
+                            'down': (sortQuery.titleType === 'desc' && sortQuery.sort === 'desc')
+                        }" 
+                        href="javascript:void(0)" (click)="sortSwitchUtil('description')">Description</a>
+                    </th>
+                    <th>
+                        <a class="sortButton down" [ngClass]="{
+                            'up': (sortQuery.titleType === 'price' && sortQuery.sort === 'asc'), 
+                            'down': (sortQuery.titleType === 'price' && sortQuery.sort === 'desc')
+                        }" href="javascript:void(0)" (click)="sortSwitchUtil('price')">Price (USD)</a>
+                    </th>
+                    <th>Category</th>
+                    <th>
+                        <a class="sortButton" [ngClass]="{
+                            'up': (sortQuery.titleType === 'date' && sortQuery.sort === 'asc'), 
+                            'down': (sortQuery.titleType === 'date' && sortQuery.sort === 'desc')
+                        }" href="javascript:void(0)" (click)="sortSwitchUtil('date')">Date</a>
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of expenseData">
+                    <td>{{data.desc}}</td>
+                    <td>{{data.price}}</td>
+                    <td> {{data.category ? categories[data.category] : '-'}}</td>
+                    <td>{{data.date | date}}</td>
+                    <td>
+                        <button class="button button-edit" (click)="editExpenses(data)"><mat-icon>edit</mat-icon></button>
+                        <button class="button button-delete" (click)="deleteExpenses(data.id)"><mat-icon>delete_forever</mat-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<app-expenses-form #expensesForm></app-expenses-form>

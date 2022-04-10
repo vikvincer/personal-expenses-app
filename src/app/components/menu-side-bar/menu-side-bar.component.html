@@ -1,0 +1,10 @@
+<div class="menu-side-bar">
+    <ul>
+       <ng-container  *ngFor="let config of navConfig">
+         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="config.path" [state]="{title: config.label}">{{config.label}}</a> 
+         </li>
+       </ng-container>
+    </ul>
+</div>
+
