@@ -69,6 +69,14 @@ export class DataChartComponent implements OnInit {
     const ctx:any = document.getElementById('appChartElem');
     const appChart = new Chart(ctx, {
         type: 'line', 
+        options: {
+          scales: {
+            yAxes:{
+              display: true,
+              beginAtZero: true
+            }
+          }
+        },
         data: {
           labels: ['Mon', 'Tue', 'Wed', 'Thru', 'Fri', 'Sat', 'Sun'],
           datasets: [{
@@ -76,7 +84,7 @@ export class DataChartComponent implements OnInit {
             data: this.chartData,
             fill: false,
             borderColor: '#f44336',
-            tension: 0
+            tension: 0,
           }]
         }
     });

@@ -35,8 +35,8 @@ export class DashboardComponent implements OnInit {
     const filterData = data?.filter((item: any) =>  DateTime.fromJSDate(new Date(item.date)).toLocal().weekNumber === currentDate.toLocal().weekNumber)
     for(let i = 0; i <= 6; i++) {
       const day = weekStart.plus({day: i});
-      const byDayFilter = filterData.filter((it: any) =>  DateTime.fromJSDate(new Date(it.date)).day === day.day);
-      const value =byDayFilter.reduce((total, item: any) => total + item.price , 0)
+      const byDayFilter = filterData?.filter((it: any) =>  DateTime.fromJSDate(new Date(it.date)).day === day.day);
+      const value =byDayFilter?.reduce((total, item: any) => total + item.price , 0)
       this.chartData.push(value);
     }
   }

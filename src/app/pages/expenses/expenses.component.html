@@ -35,18 +35,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let data of expenseData">
-                    <td>{{data.desc}}</td>
-                    <td>{{data.price}}</td>
-                    <td> {{data.category ? categories[data.category] : '-'}}</td>
-                    <td>{{data.date | date}}</td>
-                    <td>
-                        <button class="button button-edit" (click)="editExpenses(data)"><mat-icon>edit</mat-icon></button>
-                        <button class="button button-delete" (click)="deleteExpenses(data.id)"><mat-icon>delete_forever</mat-icon></button>
-                    </td>
-                </tr>
+                <ng-container *ngIf="expenseData?.length">
+                    <tr *ngFor="let data of expenseData">
+                        <td>{{data.desc}}</td>
+                        <td>{{data.price}}</td>
+                        <td> {{data.category ? categories[data.category] : '-'}}</td>
+                        <td>{{data.date | date}}</td>
+                        <td>
+                            <button class="button button-edit" (click)="editExpenses(data)"><mat-icon>edit</mat-icon></button>
+                            <button class="button button-delete" (click)="deleteExpenses(data.id)"><mat-icon>delete_forever</mat-icon></button>
+                        </td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
+        <div class="no-data" *ngIf="!expenseData?.length">
+            <h2>No data</h2>
+        </div>
     </div>
 </div>
 <app-expenses-form #expensesForm></app-expenses-form>

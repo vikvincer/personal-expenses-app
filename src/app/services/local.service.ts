@@ -64,11 +64,11 @@ export class LocalService {
     const expensesItemIndex = parsedLocalDataArr.findIndex((data: any) => data.id === id);
     parsedLocalDataArr.splice(expensesItemIndex, 1);
     localStorage.setItem(this.activeUser, JSON.stringify(parsedLocalDataArr));
-     this.updateLocalStore();
-
+    this.updateLocalStore();
   }
 
   getExpenses(key: string):Observable<ExpensesModel[]> {
+    localStorage.clear();
     return this.localDataStore$;
   }
 
@@ -83,10 +83,8 @@ export class LocalService {
       'Content-Type' : 'application/json',
     });
 
-    // Content-Type: application/json
    const localData: any = localStorage.getItem(this.activeUser);
    const localArrayData = JSON.parse(localData);
-    console.log('called');
    return this.http.post(url, {body: localArrayData}, {headers}).subscribe(res => {
      console.log('res', res)
    })
